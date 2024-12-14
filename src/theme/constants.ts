@@ -13,6 +13,7 @@ export const FONT_SIZE = {
   small: 14,
   medium: 16,
   large: 18,
+  heading: 32,
 };
 
 export const FONT_FAMILY = {

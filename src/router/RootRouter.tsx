@@ -6,24 +6,20 @@ export type StackParams = {
   Home: {};
   SignIn: {};
   SignUp: {};
+  Video: {};
 };
 
 const RootRouter: React.FC = () => {
   const Stack = createNativeStackNavigator<StackParams>();
 
-  const isSignedIn = false;
+  const isSignedIn = true;
 
   const renderRouter = () => {
     return (
-      <Stack.Navigator>
-        {isSignedIn ? (
-          <Stack.Screen name="Home" component={HomeScreen} />
-        ) : (
-          <>
-            <Stack.Screen name="SignIn" component={SignInScreen} />
-            <Stack.Screen name="SignUp" component={SignUpScreen} />
-          </>
-        )}
+      <Stack.Navigator screenOptions={{headerShown: false}}>
+        <Stack.Screen name="SignIn" component={SignInScreen} />
+        <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen name="SignUp" component={SignUpScreen} />
       </Stack.Navigator>
     );
   };

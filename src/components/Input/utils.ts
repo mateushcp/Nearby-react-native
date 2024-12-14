@@ -1,7 +1,4 @@
 import StringMask from 'string-mask';
-/*
- Follow the pattern to apply and extract the mask
-*/
 
 export type MaskType = 'phone' | 'birth';
 
