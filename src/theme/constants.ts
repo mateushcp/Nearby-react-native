@@ -7,6 +7,8 @@ export const COLOR = {
   orange: '#F58A25',
   toranja: '#F2632F',
   red: '#EB482B',
+  primary: '#F58A25',
+  gray: '#8E8E93',
 };
 
 export const FONT_SIZE = {

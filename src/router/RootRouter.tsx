@@ -1,6 +1,7 @@
 import React from 'react';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {HomeScreen, SignInScreen, SignUpScreen} from '../screens';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { NavigationContainer } from '@react-navigation/native';
+import { HomeScreen, SignInScreen, SignUpScreen } from '../screens';
 
 export type StackParams = {
   Home: {};
@@ -11,11 +12,11 @@ export type StackParams = {
 const RootRouter: React.FC = () => {
   const Stack = createNativeStackNavigator<StackParams>();
 
-  const isSignedIn = false;
+  const isSignedIn = false; // Simulação de autenticação
 
-  const renderRouter = () => {
-    return (
-      <Stack.Navigator>
+  return (
+    <NavigationContainer>
+      <Stack.Navigator screenOptions={{ headerShown: false }}> 
         {isSignedIn ? (
           <Stack.Screen name="Home" component={HomeScreen} />
         ) : (
@@ -25,9 +26,8 @@ const RootRouter: React.FC = () => {
           </>
         )}
       </Stack.Navigator>
-    );
-  };
-  return renderRouter();
+    </NavigationContainer>
+  );
 };
 
 export default RootRouter;

@@ -218,7 +218,7 @@
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
 				00EEFC60759A1932668264C0 /* [CP] Embed Pods Frameworks */,
 				E235C05ADACE081382539298 /* [CP] Copy Pods Resources */,
-				1D2F42A0E12A21A8A4A32540 /* [CP-User] [RNFB] Core Configuration */,
+				346E2FF9D889BA6E5C5D1AF8 /* [CP-User] [RNFB] Core Configuration */,
 			);
 			buildRules = (
 			);
@@ -326,7 +326,7 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-apertai/Pods-apertai-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		1D2F42A0E12A21A8A4A32540 /* [CP-User] [RNFB] Core Configuration */ = {
+		346E2FF9D889BA6E5C5D1AF8 /* [CP-User] [RNFB] Core Configuration */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -656,7 +656,8 @@
 				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",
-					" ",
+					"-Wl",
+					"-ld_classic",
 				);
 				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
@@ -742,7 +743,8 @@
 				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",
-					" ",
+					"-Wl",
+					"-ld_classic",
 				);
 				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
