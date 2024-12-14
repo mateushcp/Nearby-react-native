@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>893772993623-o76k0dqkt2d6ilgbtm9fbpkione4g16p.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.893772993623-o76k0dqkt2d6ilgbtm9fbpkione4g16p</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDCO4A0LUdrZ8Bcal12g7T9eyRF80j3TZA</string>
+	<key>GCM_SENDER_ID</key>
+	<string>893772993623</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>br.com.apertai</string>
+	<key>PROJECT_ID</key>
+	<string>apertai</string>
+	<key>STORAGE_BUCKET</key>
+	<string>apertai.firebasestorage.app</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:893772993623:ios:c08eace116aa796742bf12</string>
+</dict>
+</plist>
