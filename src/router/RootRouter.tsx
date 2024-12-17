@@ -7,7 +7,7 @@ export type StackParams = {
   Home: {};
   SignIn: {};
   SignUp: {};
-  Video: {};
+  Video: {arena: any};
 };
 
 const RootRouter: React.FC = () => {

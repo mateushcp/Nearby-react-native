@@ -106,7 +106,7 @@ const HomeScreen: React.FC = () => {
         <View style={styles.searchRow}>
           <Button
             title="Buscar vídeos"
-            onPress={() => navigation.navigate('Video')}
+            onPress={() => navigation.navigate('Video', {arena})}
             iconName="play-circle"
           />
         </View>

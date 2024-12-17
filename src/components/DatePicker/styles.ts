@@ -26,7 +26,7 @@ export const styles = StyleSheet.create({
     borderColor: COLOR.greyLight,
     borderWidth: 1,
     padding: 16,
-    borderRadius: 8,
+    borderRadius: 12,
   },
   inputFocus: {
     borderWidth: 1,

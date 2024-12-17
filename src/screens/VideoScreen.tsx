@@ -8,14 +8,21 @@ import {
 } from 'react-native';
 import {COLOR, FONT_FAMILY, FONT_SIZE} from '../theme/constants';
 import {Button, DatePicker, Dropdown} from '../components';
-import {useNavigation} from '@react-navigation/native';
+import {useNavigation, useRoute} from '@react-navigation/native';
 import MaterialIcons from '@react-native-vector-icons/material-icons';
 
 const VideoScreen: React.FC = () => {
+  const route = useRoute<any>();
   const navigation = useNavigation();
   const [arena, setArena] = useState();
   const [court, setCourt] = useState();
   const [date, setDate] = useState('');
+
+  useEffect(() => {
+    if (route && route.params) setArena(route.params.arena);
+  }, [route]);
+
+  console.log('ROUTE', route);
 
   return (
     <View style={styles.container}>
@@ -32,14 +39,21 @@ const VideoScreen: React.FC = () => {
             selectedOption={arena}
             onSelect={setArena}
             options={[]}
+            customStyles={{paddingVertical: 4}}
           />
           <Dropdown
             label="Arena"
             selectedOption={court}
             onSelect={setCourt}
             options={[]}
+            customStyles={{paddingVertical: 4}}
           />
-          <DatePicker label="Data" value={date} setValue={setDate} />
+          <DatePicker
+            label="Data"
+            value={date}
+            setValue={setDate}
+            customStyles={{paddingVertical: 4}}
+          />
           <Button
             title="Buscar vídeos"
             onPress={() => {}}
@@ -65,7 +79,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     backgroundColor: COLOR.offWhite,
     paddingTop: 24,
-    paddingBottom: 16,
+    paddingBottom: 8,
     paddingHorizontal: 16,
     alignItems: 'center',
   },

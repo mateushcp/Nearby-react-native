@@ -9,6 +9,7 @@ interface DropdownProps {
   selectedOption?: any;
   options: any;
   onSelect: (option: any) => void;
+  customStyles?: any;
 }
 
 const Dropdown = ({
@@ -16,6 +17,7 @@ const Dropdown = ({
   selectedOption,
   options,
   onSelect,
+  customStyles,
 }: DropdownProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const heightScreen = Dimensions.get(`screen`).height;
@@ -28,7 +30,7 @@ const Dropdown = ({
   };
 
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, customStyles]}>
       <Text style={styles.label}>{label}</Text>
       <TouchableOpacity
         onPress={toggleOpen}

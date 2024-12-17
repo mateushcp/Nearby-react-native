@@ -8,9 +8,15 @@ interface DatePickerProps {
   label: string;
   value: string;
   setValue: any;
+  customStyles?: any;
 }
 
-const DatePicker = ({label, value, setValue}: DatePickerProps) => {
+const DatePicker = ({
+  label,
+  value,
+  setValue,
+  customStyles,
+}: DatePickerProps) => {
   const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
 
   const toggleDatePicker = () => setDatePickerVisibility(prev => !prev);
@@ -20,7 +26,7 @@ const DatePicker = ({label, value, setValue}: DatePickerProps) => {
     toggleDatePicker();
   };
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, customStyles]}>
       <Text style={styles.label}>{label}</Text>
       <TextInput
         style={styles.input}
