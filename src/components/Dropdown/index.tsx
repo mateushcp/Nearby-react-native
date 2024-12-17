@@ -30,7 +30,10 @@ const Dropdown = ({
   return (
     <View style={styles.container}>
       <Text style={styles.label}>{label}</Text>
-      <TouchableOpacity onPress={toggleOpen} style={styles.dropdown}>
+      <TouchableOpacity
+        onPress={toggleOpen}
+        style={styles.dropdown}
+        disabled={options && options.length === 0}>
         <Text>{selectedOption ? selectedOption.value : label}</Text>
         <MaterialIcons
           style={styles.icon}
@@ -40,14 +43,16 @@ const Dropdown = ({
       <Modal animationType="fade" visible={isOpen} transparent>
         <View style={[styles.options, {height: heightScreen}]}>
           <ScrollView style={styles.optionsWrapper}>
-            {options.map((option: any) => (
-              <TouchableOpacity
-                onPress={() => handleSelect(option)}
-                style={styles.optionItem}
-                key={option.id}>
-                <Text>{option.value}</Text>
-              </TouchableOpacity>
-            ))}
+            {options &&
+              options.length > 0 &&
+              options.map((option: any) => (
+                <TouchableOpacity
+                  onPress={() => handleSelect(option)}
+                  style={styles.optionItem}
+                  key={option.id}>
+                  <Text>{option.value}</Text>
+                </TouchableOpacity>
+              ))}
           </ScrollView>
         </View>
       </Modal>

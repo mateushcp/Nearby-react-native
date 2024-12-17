@@ -1,7 +1,7 @@
 import React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {NavigationContainer} from '@react-navigation/native';
-import {HomeScreen, SignInScreen, SignUpScreen} from '../screens';
+import {HomeScreen, SignInScreen, SignUpScreen, VideoScreen} from '../screens';
 
 export type StackParams = {
   Home: {};
@@ -21,6 +21,7 @@ const RootRouter: React.FC = () => {
         <Stack.Screen name="Home" component={HomeScreen} />
         <Stack.Screen name="SignIn" component={SignInScreen} />
         <Stack.Screen name="SignUp" component={SignUpScreen} />
+        <Stack.Screen name="Video" component={VideoScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );

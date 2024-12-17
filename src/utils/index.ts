@@ -5,3 +5,21 @@ export const formatDate = (date: Date): string => {
 
   return `${day}/${month}/${year}`;
 };
+
+export const convertToArenaOptions = (dataArena: any) => {
+  return dataArena.map((item: any) => ({
+    id: item.id,
+    value: item.name,
+    subCourts: item.subCourts,
+  }));
+};
+
+export const convertToCourtOptions = (arena: any) => {
+  if (!arena) {
+    return;
+  }
+  return arena.subCourts.map((court: any) => ({
+    id: court,
+    value: court,
+  }));
+};

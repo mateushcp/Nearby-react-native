@@ -1,25 +1,56 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import MaterialIcons from '@react-native-vector-icons/material-icons';
 import {COLOR, FONT_FAMILY, FONT_SIZE} from '../theme/constants';
-import {DatePicker, Dropdown} from '../components';
+import {Button, DatePicker, Dropdown} from '../components';
 import {useNavigation} from '@react-navigation/native';
+import {useGetArena} from '../services';
+import {convertToArenaOptions, convertToCourtOptions} from '../utils';
 
-const options = [
+const optionsCity = [
   {id: 'belohorizonte', value: 'Belo Horizonte'},
   {id: 'lagoasanta', value: 'Lagoa Santa'},
-  {id: 'riodejaneiro', value: 'Rio de Janeiro'},
 ];
+
+const optionsState = [{id: 'mg', value: 'Minas Gerais'}];
 
 const HomeScreen: React.FC = () => {
   const navigation = useNavigation();
-  const [city, setCity] = useState();
-  const [state, setState] = useState();
+  const [city, setCity] = useState(optionsCity[0]);
+  const [state, setState] = useState(optionsState[0]);
+  const [arena, setArena] = useState();
+  const [court, setCourt] = useState();
   const [date, setDate] = useState('');
+  const [arenaOptions, setArenaOptions] = useState<any>();
+  const [courtOptions, setCourtOptions] = useState<any>();
 
   const logoff = () => {
     navigation.navigate('SignIn');
   };
+
+  const {data: dataArena} = useGetArena(city.value);
+
+  useEffect(() => {
+    if (dataArena && dataArena.length > 0) {
+      setArenaOptions(convertToArenaOptions(dataArena));
+    } else {
+      setArenaOptions([]);
+      setCourtOptions([]);
+    }
+  }, [dataArena]);
+
+  useEffect(() => {
+    if (arena) {
+      const convertedCourts = convertToCourtOptions(arena);
+      setCourt(convertedCourts[0]);
+      setCourtOptions(convertedCourts);
+    }
+  }, [arena]);
+
+  useEffect(() => {
+    setArena(undefined);
+    setCourt(undefined);
+  }, [city]);
 
   return (
     <View style={styles.container}>
@@ -46,31 +77,38 @@ const HomeScreen: React.FC = () => {
             label="Cidade"
             selectedOption={city}
             onSelect={setCity}
-            options={options}
+            options={optionsCity}
           />
           <Dropdown
             label="Estado"
             selectedOption={state}
             onSelect={setState}
-            options={options}
+            options={optionsState}
           />
         </View>
         <View style={styles.addressRow}>
           <Dropdown
             label="Quadra"
-            selectedOption={city}
-            onSelect={setCity}
-            options={options}
+            selectedOption={arena}
+            onSelect={setArena}
+            options={arenaOptions}
           />
           <Dropdown
             label="Arena"
-            selectedOption={state}
-            onSelect={setState}
-            options={options}
+            selectedOption={court}
+            onSelect={setCourt}
+            options={courtOptions}
           />
         </View>
         <View style={styles.addressRow}>
           <DatePicker label="Data" value={date} setValue={setDate} />
+        </View>
+        <View style={styles.searchRow}>
+          <Button
+            title="Buscar vídeos"
+            onPress={() => navigation.navigate('Video')}
+            iconName="play-circle"
+          />
         </View>
       </View>
     </View>
@@ -118,6 +156,12 @@ const styles = StyleSheet.create({
   },
   addressRow: {
     flexDirection: 'row',
+    gap: 16,
+    paddingHorizontal: 16,
+    marginBottom: 12,
+  },
+  searchRow: {
+    width: '100%',
     gap: 16,
     paddingHorizontal: 16,
     marginBottom: 12,

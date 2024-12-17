@@ -9,6 +9,7 @@ export const COLOR = {
   red: '#EB482B',
   primary: '#F58A25',
   gray: '#8E8E93',
+  greyLighter: '#D4D4D4',
 };
 
 export const FONT_SIZE = {
